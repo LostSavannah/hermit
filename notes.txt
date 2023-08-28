@@ -1,0 +1,79 @@
+
+
+requests{
+    "code" : "",
+    "products": [],
+    "creation_date": "",
+    "target": "",
+    "deliveries": [],
+    "status": 0
+}
+
+employees{
+    "code": "",
+    "name": "",
+    "photo": ""
+}
+
+vehicles{
+    "code": "",
+    "brand": "",
+    "model": "",
+    "nickname": "",
+    "passengers": 0,
+    "weightLimit": 0.0,
+    "volumeLimit": 0.0,
+    "features": []
+}
+
+features{
+    "code": "",
+    "name": ""
+}
+
+locations{
+    "code": "",
+    "name": "",
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "features": []
+}
+
+products{
+    "code": "",
+    "name": "",
+    "description": "",
+    "unit_volume": 0.0,
+    "unit_weight": 0.0
+}
+
+lots{
+    "code": "",
+    "product": "",
+    "quantity": 0,
+    "expiration_epoch": 0
+}
+
+deliveries{
+    "code": "",
+    "driver": "",
+    "vehicle": "",
+    "passengers": [],
+    "lots": [],
+    "source": "",
+    "destination": "",
+    "creation_epoch": 0,
+    "depart_epoch": 0,
+    "arrive_epoch": 0,
+    "delivery_token": "",
+    "reception_token": "",
+    "completion_token": "",
+    "status": 0
+}
+
+arrivals{
+    "code": "",
+    "entity": "",
+    "location": "",
+    "epoch": 0
+}
