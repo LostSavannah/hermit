@@ -19,12 +19,12 @@ CollectionCallback = Callable[[Collection,], T]
 
 def connection(callback:ConnectionCallback) -> T:
     with MongoClient(connection_string) as client:
-        database = client["antshive"]
+        database = client["hermit"]
         return callback(database)
 
 def collection(name:str, callback:CollectionCallback) -> T:
     with MongoClient(connection_string) as client:
-        database = client["antshive"]
+        database = client["hermit"]
         collection = database[name]
         return callback(collection)
     

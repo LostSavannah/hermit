@@ -3,6 +3,10 @@ from pydantic import BaseModel
 class Code(BaseModel):
     code: str
 
+class FileHandler(Code):
+    path: str
+    owner: str
+
 class Product(BaseModel):
     name: str
     description: str

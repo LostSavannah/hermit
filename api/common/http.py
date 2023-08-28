@@ -1,6 +1,9 @@
 from typing import TypeVar
 from fastapi import FastAPI, Request, Response
 from fastapi.exceptions import HTTPException
+from .data import collection
+from .models import UserWithPassword
+from pymongo.collection import Collection
 
 def not_success(status_code:int, detail:str = None):
     raise HTTPException(status_code, detail or 'Bobo')
@@ -12,6 +15,17 @@ T = TypeVar("T")
 def value_or_not_found(value:T) -> T|None:
     return value or not_found()
 
+def validate_user(api:FastAPI) -> FastAPI:
+    async def inner(request:Request, call_next):
+        def get_user(collection:Collection):
+            token:str = request.headers.get("Token") or ""
+            document = collection.find_one({"token": token})
+            return UserWithPassword(**document) if document else None 
+        print(collection("users", get_user))
+        response:Response = await call_next(request)
+        return response
+    api.middleware("http")(inner)
+    return api
 
 def configure_cors(api:FastAPI) -> FastAPI:
     async def inner(request:Request, call_next):

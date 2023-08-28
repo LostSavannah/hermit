@@ -1,0 +1,36 @@
+Users:
+
+RoomTypes:
+  code: string
+  location: string
+  name: string
+  photo: string
+  features: [string]
+
+Locations:
+  code: string
+  name: string
+  latitude: float
+  longitude: float
+  altitude: float
+  admin: string
+  managers: [string]
+
+Buildings:
+  code: string
+  location: string
+  name: string
+
+Rooms:
+  code: string
+  type: string
+  building: string
+
+Reservations:
+  code: string
+  room: string
+  by: string
+  from: 0
+  to: 0
+  status: string
+  token: string
