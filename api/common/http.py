@@ -11,9 +11,16 @@ def not_success(status_code:int, detail:str = None):
 def not_found(detail:str = None):
     return not_success(404, detail)
 
+def bad_request(detail:str = None):
+    return not_success(400, detail)
+
 T = TypeVar("T")
 def value_or_not_found(value:T) -> T|None:
     return value or not_found()
+
+def value_or_bad_request(value:T) -> T|None:
+    return value or bad_request()
+
 
 def validate_user(api:FastAPI) -> FastAPI:
     async def inner(request:Request, call_next):

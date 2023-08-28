@@ -7,6 +7,9 @@ class FileHandler(Code):
     path: str
     owner: str
 
+class UploadFileRequest(BaseModel):
+    content: str
+
 class Product(BaseModel):
     name: str
     description: str
