@@ -30,7 +30,9 @@ Reservations:
   code: string
   room: string
   by: string
+  creator: string
+  creation: 0
   from: 0
   to: 0
-  status: string
+  status: 0
   token: string

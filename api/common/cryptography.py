@@ -27,3 +27,27 @@ def generate_uuid() -> str:
 
 def generate_token() -> str:
     return generate_uuid()
+
+#I have no actual clue of how that works. Thanks to https://stackoverflow.com/users/391531/nmichaels
+#Answered in https://stackoverflow.com/questions/8539441/private-public-encryption-in-python-with-standard-library
+
+def gen_prime(n=10**8, bases=range(2, 20000)):
+    p = 1
+    while any(pow(base, p-1, p) != 1 for base in bases):
+        p = random.SystemRandom().randrange(n)
+    return p
+
+def get_multiplicative_inverse(modulus, value):
+    x, last = 0, 1
+    a, b = modulus, value
+    while b:
+        a, q, b = b, a // b, a % b
+        x, last = last - q * x, x
+    result = (1 - last * modulus) // value
+    return result + modulus if result < 0 else result
+
+def keygen(n:int = 10**8, e:int = 65537):
+    prime1 = gen_prime(n)
+    prime2 = gen_prime(n)
+    totient = (prime1 - 1) * (prime2 - 1)
+    return prime1 * prime2, get_multiplicative_inverse(totient, e)

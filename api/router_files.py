@@ -20,6 +20,20 @@ async def get_file_by_code(code:str):
     fileName:str = os.sep.join([files_root, collection("files", inner)])
     return FileResponse(fileName)
 
+@router.patch("/{code}")
+async def patch_file(code:str, upload_file_request:UploadFileRequest, request:Request):
+    def inner(files:Collection):
+        code = str(uuid4())
+        path = str(uuid4())
+        owner:UserRecord = value_or_bad_request(request.user)
+        fileHandler:FileHandler = value_or_not_found(files.find_one({"code": code}))
+        if fileHandler.owner != owner.code:
+            return bad_request()
+        with open(os.sep.join([files_root, path]), 'w') as fo:
+            fo.write(upload_file_request.content)
+        return fileHandler
+    return collection("files", inner)
+
 @router.post("/")
 async def post_file(upload_file_request:UploadFileRequest, request:Request):
     def inner(files:Collection):
