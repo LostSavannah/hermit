@@ -36,3 +36,11 @@ Reservations:
   to: 0
   status: 0
   token: string
+
+Events:
+  code: string
+  target: string
+  event: string
+  description: string
+  actors: []
+  moment: 0

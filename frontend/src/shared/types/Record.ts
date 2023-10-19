@@ -1,0 +1,1 @@
+export type Record<T extends {}> = {code:string} & T;

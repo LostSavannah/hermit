@@ -1,16 +1,16 @@
 import { GetSessionToken } from "../tools/SessionManager";
-import Result from "../types/Result";
+import { Result } from "../types/Result";
 
 export default class BaseAPIService{
     protected baseUrl: string = "http://localhost:8080";
 
-    async post<T, TResult>(url:string, data:T):Promise<Result<TResult>>{
+    async post<T, TResult>(url:string, data:T, isAnonymous:boolean|null = null):Promise<Result<TResult>>{
         return await new Promise<Result<TResult>>((resolve, reject) => {
             fetch(`${this.baseUrl}/${url}`, {
                 method: 'POST',
-                headers: {
+                headers:{
                     "Content-Type": "application/json",
-                    "Token": GetSessionToken()?.token ?? ""
+                    ...(isAnonymous? {} : {"Token": GetSessionToken()?.token ?? ""})
                 },
                 body: JSON.stringify(data)
             })

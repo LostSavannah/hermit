@@ -22,8 +22,8 @@ export default function MainPage(){
                         <ul>
                             <li><a href="/">Dashboard</a></li>
                             <li><a href="/Locations">Locations</a></li>
-                            <li><a href="/Deliveries">Deliveries</a></li>
-                            <li><a href="/Orders">Orders</a></li>
+                            <li><a href="/Reservations">Reservations</a></li>
+                            <li><a href="/Events">Events</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -32,7 +32,5 @@ export default function MainPage(){
                 </div>
             </div>
         </div>
-        
-
     </>;
 }

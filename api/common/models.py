@@ -23,7 +23,8 @@ class Location(BaseModel):
     name: str
     latitude: float
     longitude: float
-    features: list[str]
+    altitude: float
+    admin: str
     managers: list[str]
 
 class LocationRecord(Code, Location):
@@ -44,3 +45,12 @@ class UserWithPassword(UserRecord):
     token: str
     password_hash: str
     password_salt: str
+
+class RoomType(BaseModel):
+    location: str
+    name: str
+    photo: str
+    features: list[str]
+
+class RoomTypeRecord(Code, RoomType):
+    pass

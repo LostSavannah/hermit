@@ -2,8 +2,10 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import MainPage from './shared/pages/MainPage';
 import Login from './shared/pages/Login';
 import Locations from './shared/pages/Locations';
-import Deliveries from './shared/pages/Deliveries';
-import Orders from './shared/pages/Orders';
+import Location from './shared/pages/Location';
+import Dashboard from './shared/pages/Dashboard';
+import Reservations from './shared/pages/Reservations';
+import Events from './shared/pages/Events';
 
 const router = createBrowserRouter([
   {
@@ -11,21 +13,29 @@ const router = createBrowserRouter([
     element: <MainPage></MainPage>,
     children: [
       {
+        path: "/",
+        element: <Dashboard></Dashboard>
+      },
+      {
         path: "Locations",
         element: <Locations></Locations>
       },
       {
-        path: "Deliveries",
-        element: <Deliveries></Deliveries>
+        path: "Locations/:locationId",
+        element: <Location></Location>
       },
       {
-        path: "Orders",
-        element: <Orders></Orders>
+        path: "Reservations",
+        element: <Reservations></Reservations>
       },
+      {
+        path: "Events",
+        element: <Events></Events>
+      }
     ]
   },
   {
-    path: "/Login",
+    path: "Login",
     element: <Login></Login>
   }
 ])
