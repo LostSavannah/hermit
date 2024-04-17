@@ -6,7 +6,6 @@ from router_users import router as users_router
 from router_files import router as files_router
 from router_locations import router as locations_router
 
-
 api:FastAPI = configure_cors(FastAPI())
 
 api.add_middleware(AuthenticationMiddleware, backend=TokenAuthentication())
